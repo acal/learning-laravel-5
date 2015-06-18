@@ -25,3 +25,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+#Critical step if using on C9 IDE: 
+$sudo nano /etc/apache2/sites-enabled/001-cloud9.conf
+# Change DocumentRoot to 'DocumentRoot /home/ubuntu/workspace/public'
