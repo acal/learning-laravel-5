@@ -11,6 +11,7 @@
         <li>{{ $person }}</li>
         @endforeach
     </ul>
+@endif
     <h1>About Me: {{ $first }} {{ $last }}</h1> <!-- escaped -->
     <p>Sup?</p>
 
