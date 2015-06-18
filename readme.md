@@ -31,14 +31,40 @@ $sudo nano /etc/apache2/sites-enabled/001-cloud9.conf
 # Change DocumentRoot to 'DocumentRoot /home/ubuntu/workspace/public'
 
 # Chap 7 -
-#MIgrate
+#Create MIgration
 $php artisan migrate
 #Access db sqlite3 - point a path to the db file
 $sqlite3 storage/database.sqlite
 >.tables // shows tables
 >.schema //shows schema
 
-#If a rollback fails, usually due to a down action in migration file, try this from app path directory: 
+#If a rollback fails, usually due to a down action in migration file, try this from app path directory (e.g. learning-laravel-5): 
 $composer require doctrine/dbal
 #then as usual try again:
 $php artisan migrate:rollback
+
+#update Model then
+
+#Manually add to sqlite3 db via tinker
+$php artisan tinker
+>$article = new App\Article //creates article object
+>$article; //checks
+>$article->title = 'My first article'; //adds title
+>$article->body = 'Lorem' //adds body text
+>$article->published_at = Carbon\Carbon::now();  //uses carbon package to gerenate time stamp for now
+>$article; //check
+>$article->toArray();  //checks to see what is in the array
+>$article->save(); //save
+>App\Article::all()->toArray();  //shows table contents casts it to an array
+# Update the db via tinker - Model.php curerntly configured to have non-null for all table elelments; all need to be updated regardless of need.
+>$article->title = 'Updated 1st article'; 
+>$article->body = 'Body updated 1st article';
+>$article->published_at = Carbon\Carbon::now();
+>$article->save(); //should register true
+>$article = App\Article::find(3);  // finds 3rd entry
+
+SQLITE
+$sqlite3 storage/database.sqlite
+>select * from articles; ///another way to see if db was updated; shows updated tables updated via tinker or otherwise
+
+
