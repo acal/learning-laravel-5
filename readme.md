@@ -33,7 +33,12 @@ $sudo nano /etc/apache2/sites-enabled/001-cloud9.conf
 # Chap 7 -
 #MIgrate
 $php artisan migrate
-#Access db sqlite3
+#Access db sqlite3 - point a path to the db file
 $sqlite3 storage/database.sqlite
 >.tables // shows tables
 >.schema //shows schema
+
+#If a rollback fails, usually due to a down action in migration file, try this from app path directory: 
+$composer require doctrine/dbal
+#then as usual try again:
+$php artisan migrate:rollback
