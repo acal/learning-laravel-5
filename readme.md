@@ -29,3 +29,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 #Critical step if using on C9 IDE: 
 $sudo nano /etc/apache2/sites-enabled/001-cloud9.conf
 # Change DocumentRoot to 'DocumentRoot /home/ubuntu/workspace/public'
+
+# Chap 7 -
+#MIgrate
+$php artisan migrate
+#Access db sqlite3
+$sqlite3 storage/database.sqlite
+>.tables // shows tables
+>.schema //shows schema
