@@ -77,3 +77,25 @@ return view('articles.create');
 #@extends('app')....
 #To add a function for <form> generation optional
 $composer require illuminate/html  
+
+#app/config/app.php has important config - adding illuminate/html to provides in app.php
+'Form'      => 'Illuminate\Html\FormFacade\Form',
+'Html'      => 'Illuminate\Html\HtmlFacade\Html',
+
+
+# make sure that composer.json requires illuminate/html ex below:
+{
+    "require": {
+        "phpspec/phpspec": "^2.2",
+        "doctrine/dbal": "^2.5"
+        "illuminate/html": "5.*"
+    }
+}
+#then run
+$composer update
+
+#Articles Controller use:
+use App\Article;
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use Request;
