@@ -18,4 +18,6 @@ Route::get('/', function () {
 Route::get('about', 'PagesController@about');
 Route::get('contact', 'PagesController@contact');
 Route::get('articles', 'ArticlesController@index');
-Route::get('articles/{id}', 'ArticlesController@show'); //for show single article
+Route::get('articles/create', 'ArticlesController@create'); //this one needs to be placed above articles/{id} or the wild card will override this route
+Route::get('articles/{id}', 'ArticlesController@show'); //for show single article using id wild card
+

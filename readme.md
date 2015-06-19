@@ -68,3 +68,12 @@ $sqlite3 storage/database.sqlite
 >select * from articles; ///another way to see if db was updated; shows updated tables updated via tinker or otherwise
 
 
+#To generate a create new articles function
+#create routes: 
+Route::get('articles/create', 'ArticlesController@create');
+#Add a create public function to Article Controller
+return view('articles.create');
+# Gen views/articles/articles.blade.php
+#@extends('app')....
+#To add a function for <form> generation optional
+$composer require illuminate/html  
